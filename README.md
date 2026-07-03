@@ -45,16 +45,6 @@ Design decisions that make it production-grade rather than a demo:
 
 **Infrastructure:** n8n self-hosted on a hardened Linux VPS — Docker Compose, Traefik with Let's Encrypt TLS, Postgres 16 backend, secured credential management.
 
----
-
-## Analytics sample
-
-**Nonprofit donations KPI dashboard** — Excel data model (SUMIFS / UNIQUE / FILTER / LET, complete-month logic to avoid partial-period distortion) with monthly totals, MoM %, new vs. returning donors, and trailing-90-day KPIs; parallel PostgreSQL analysis (MoM via `LAG`, top-donor and cohort queries). Versioned deliverables with documented assumptions and QA notes.
-
-*Repo link: (add link to the KPI repo here)*
-
----
-
 ## Currently
 
 Embedded full-time as the dedicated AI & automation specialist for a U.S. small business (engagement under NDA): process auditing and documentation, workflow automation, CRM/API integrations, LLM-assisted intake, and automated reporting for ownership.
