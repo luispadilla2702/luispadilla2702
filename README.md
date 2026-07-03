@@ -25,7 +25,7 @@ The pattern I deploy for service businesses to replace manual lead handling. Bui
 
 ```mermaid
 flowchart LR
-    A[Web form / ad platform] -->|webhook + HMAC signature check| B[n8n intake]
+    A[Web form / ad platform] -->|webhook| B[n8n intake]
     B --> C[Normalize fields<br/>phone, email, source]
     C --> D{Duplicate?<br/>Supabase lookup}
     D -- yes --> E[Merge / update record]
@@ -38,7 +38,6 @@ flowchart LR
 
 Design decisions that make it production-grade rather than a demo:
 
-- **HMAC-verified webhooks** — reject spoofed or replayed submissions at the front door.
 - **Idempotency & dedup before anything else** — the same lead arriving twice (retries, double-submits, multi-channel) never becomes two CRM records or two notifications.
 - **Structured LLM outputs** — classification returns validated JSON, not prose; a failed parse routes to a fallback, never a silent drop.
 - **Error handling & retries with dead-lettering** — failed steps retry with backoff; unrecoverable payloads are stored and surfaced, not lost.
